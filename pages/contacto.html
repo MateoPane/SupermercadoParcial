@@ -1,0 +1,128 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto</title>
+    <link rel="icon" href="../imgs/logosumo.png" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <img class="logo-nav" src="../imgs/logosumo.png" alt="logo" />
+      <nav>
+        <ul>
+          <li type="none"><a href="./home.html">Home</a></li>
+          <li type="none"><a href="./productos.html">Productos</a></li>
+          <li type="none"><a href="./contacto.html">Contacto</a></li>
+          <li type="none"><a href="./quienesSomos.html">Quienes somos</a></li>
+          <li>
+            <a href="./cart.html"
+              ><img
+                class="carrito-compras"
+                src="../imgs/carrito-de-compras.png"
+                alt="icon-carrito"
+            /></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="contacto-info">
+        <h2>Contacto</h2>
+        <div class="telefono">
+          <img src="../imgs/llamada-telefonica.png" alt="icon-telefono" />
+          <p>+54 02284553065</p>
+        </div>
+        <div class="ubicacion">
+          <img src="../imgs/ubicacion.png" alt="icon-ubicacion" />
+          <p>Calle falsa 123</p>
+        </div>
+      </section>
+      <section class="contacto-form">
+        <h2>Complete sus datos</h2>
+        <form id="contactForm">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ingrese su nombre"
+          />
+          <div id="error-nombre" class="error-message"></div>
+
+          <label for="apellido">Apellido:</label>
+          <input
+            type="text"
+            id="apellido"
+            name="apellido"
+            placeholder="Ingrese su Apellido"
+          />
+          <div id="error-apellido" class="error-message"></div>
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Ingrese su Email"
+          />
+          <div id="error-email" class="error-message"></div>
+
+          <label for="telefono">Telefono:</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="Ingrese su Telefono"
+          />
+          <div id="error-telefono" class="error-message"></div>
+
+          <label for="comentarios">Comentarios:</label>
+          <textarea
+            id="comentarios"
+            name="comentarios"
+            placeholder="Comentarios"
+          ></textarea>
+
+          <button class="btn" type="submit">Enviar</button>
+          <div id="form-message" class="form-message"></div>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div class="izquierda">
+        <img class="logoFooter" src="../imgs/logosumoverde.png" alt="logo" />
+        <div class="icons-footer">
+          <a href="https://www.facebook.com">
+            <img src="../imgs/ico-facebook.png" alt="facebook" />
+          </a>
+          <a href="https://www.instagram.com">
+            <img src="../imgs/ico-instagram.png" alt="instagram" />
+          </a>
+          <a href="https://www.tiktok.com">
+            <img src="../imgs/ico-tiktok.png" alt="tiktok" />
+          </a>
+          <a href="https://www.whatsapp.com">
+            <img src="../imgs/ico-whatsapp.png" alt="whatsapp" />
+          </a>
+        </div>
+      </div>
+      <div class="derecha">
+        <ul>
+          <li type="none"><a href="./home.html">Home</a></li>
+          <li type="none"><a href="./productos.html">Productos</a></li>
+          <li type="none"><a href="./contacto.html">Contactanos</a></li>
+        </ul>
+        <p>Copyright 2024. All Rights Reserved</p>
+      </div>
+    </footer>
+    <script src="../scripts/contacto.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  </body>
+</html>
