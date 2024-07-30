@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carrito</title>
+    <title>Productos</title>
     <link rel="icon" href="../imgs/logosumo.png" />
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,13 +18,14 @@
   </head>
   <body>
     <header>
-      <img class="logo-nav" src="../imgs/logosumo.png" alt="logo" />
+      <a href="./home.html"
+        ><img class="logo-nav" src="../imgs/logosumo.png" alt="logo"
+      /></a>
       <nav>
         <ul>
           <li type="none"><a href="./home.html">Home</a></li>
           <li type="none"><a href="./productos.html">Productos</a></li>
           <li type="none"><a href="./contacto.html">Contacto</a></li>
-          <li type="none"><a href="./quienesSomos.html">Quienes somos</a></li>
           <li>
             <a href="./cart.html"
               ><img
@@ -38,13 +38,18 @@
       </nav>
     </header>
     <main>
-      <section class="encabezado-carrito">
-        <h3>Tu Carrito</h3>
+      <section class="encabezado-prods">
+        <h3>¡Catalogo Online!</h3>
+        <p>¡Mira nuestros Precios Imperdibles!</p>
       </section>
-      <div id="carrito"></div>
-      <button class="btn" onclick="comprar()">Comprar</button>
-      <div id="resultado"></div>
-      <button class="btn" onclick="vaciarCarrito()">Vaciar Carrito</button>
+      <div id="productos"></div>
+      <section class="ofertas-mail">
+        <h3>Reicibí nuestras promociones y ofertas vía email</h3>
+        <div class="button-input">
+          <input type="email" placeholder="Ingresa tu e-mail" id="email" />
+          <button>Suscribirme</button>
+        </div>
+      </section>
     </main>
     <footer>
       <div class="izquierda">
@@ -66,14 +71,14 @@
       </div>
       <div class="derecha">
         <ul>
-          <li><a href="./home.html">Home</a></li>
-          <li><a href="./productos.html">Productos</a></li>
-          <li><a href="./contacto.html">Contáctanos</a></li>
+          <li type="none"><a href="./home.html">Home</a></li>
+          <li type="none"><a href="./productos.html">Productos</a></li>
+          <li type="none"><a href="./contacto.html">Contactanos</a></li>
         </ul>
         <p>Copyright 2024. All Rights Reserved</p>
       </div>
     </footer>
-    <script src="../scripts/carrito.js"></script>
+    <script src="../scripts/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
   </body>
 </html>

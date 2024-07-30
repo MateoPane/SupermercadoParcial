@@ -114,24 +114,32 @@ const productos = [
   },
 ];
 
-// Función para cargar los productos en la página
+// Funcion para cargar los productos
 function cargarProductos() {
   const contenedor = document.getElementById("productos");
   productos.forEach((producto) => {
     const div = document.createElement("div");
     div.className = "producto";
     div.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" width="100" height="100">
+        <div class="prodsTamaño"><img src="${producto.imagen}" alt="${
+      producto.nombre
+    }">
         <h3>${producto.nombre}</h3>
-        <p class="precio">$${producto.precio}</p>
+        <p class="precio">$${producto.precio.toFixed(2)}</p>
         <p>Stock: ${producto.stock}</p>
-        <input type="number" id="cantidad-${producto.id}" min="0" value="0" placeholder="Cantidad">
-        <button class="btn" onclick="agregarAlCarrito(${producto.id}, parseInt(document.getElementById('cantidad-${producto.id}').value))">Agregar al Carrito</button>
-      `;
+        <input type="number" id="cantidad-${
+          producto.id
+        }" min="0" value="0" placeholder="Cantidad">
+        <button class="btn" onclick="agregarAlCarrito(${
+          producto.id
+        }, parseInt(document.getElementById('cantidad-${
+      producto.id
+    }').value))">Agregar al Carrito</button>
+      </div>`;
     contenedor.appendChild(div);
   });
 }
-// Función para agregar un producto al carrito
+// Funcion para agregar al carrito
 function agregarAlCarrito(id) {
   // Obtener el producto seleccionado por su id
   const producto = productos.find((p) => p.id === id);
@@ -146,11 +154,20 @@ function agregarAlCarrito(id) {
     });
     return;
   }
+  if (cantidad > producto.stock) {
+    Swal.fire({
+      title: "Stock insuficiente",
+      html: `No hay suficiente stock de <strong>${producto.nombre}</strong>`,
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+    return;
+  }
 
   // Obtener el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Verificar si el producto ya está en el carrito
+  // Verificar si el producto esta en el carrito
   let productoEnCarrito = carrito.find((p) => p.id === id);
   if (productoEnCarrito) {
     productoEnCarrito.cantidad += cantidad;

@@ -1,4 +1,4 @@
-// Función para cargar los productos del carrito en la página
+// Funcion para cargar los productos al carrito
 function cargarCarrito() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const contenedor = document.getElementById("carrito");
@@ -11,15 +11,15 @@ function cargarCarrito() {
     const div = document.createElement("div");
     div.className = "producto";
     div.innerHTML = `
-          <img src="${producto.imagen}" alt="${producto.nombre}" width="100" height="100">
+          <img src="${producto.imagen}" alt="${producto.nombre}">
           <h3>${producto.nombre}</h3>
-          <p class="precio">$${producto.precio}</p>
+          <p class="precio">$${producto.precio.toFixed(2)}</p>
           <p>Cantidad: ${producto.cantidad}</p>
         `;
     contenedor.appendChild(div);
   });
 }
-// Función para vaciar el carrito
+// Funcion para vaciar el carrito
 function vaciarCarrito() {
   Swal.fire({
     title: "¿Estás seguro?",
@@ -37,7 +37,7 @@ function vaciarCarrito() {
   });
 }
 /* --------------------- Funcion Comprar ---------------------*/
-// Función para procesar la compra
+// Funcion para comprar
 function comprar() {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const resultado = document.getElementById("resultado");

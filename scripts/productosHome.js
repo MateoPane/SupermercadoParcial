@@ -60,6 +60,9 @@ const productosDos = [
   },
 ];
 
+let productosHomeDescuento = [];
+let productosDosDescuento = [];
+
 function aplicarDescuento(productos, descuento) {
   return productos.map((producto) => {
     return {
@@ -72,14 +75,13 @@ function aplicarDescuento(productos, descuento) {
   });
 }
 
-// Función para agregar un producto al carrito
 function agregarAlCarrito(id) {
-  // Buscar el producto en productosHome
-  let producto = productosHome.find((p) => p.id === id);
+  // Buscar el producto en productosHomeDescuento
+  let producto = productosHomeDescuento.find((p) => p.id === id);
 
-  // Si no se encuentra en productosHome, buscar en productosDos
+  // Si no se encuentra en productosHomeDescuento, busca en productosDosDescuento
   if (!producto) {
-    producto = productosDos.find((p) => p.id === id);
+    producto = productosDosDescuento.find((p) => p.id === id);
   }
 
   const cantidad = parseInt(document.getElementById(`cantidad-${id}`).value);
@@ -93,11 +95,19 @@ function agregarAlCarrito(id) {
     });
     return;
   }
-
+  if (cantidad > producto.stock) {
+    Swal.fire({
+      title: "Stock insuficiente",
+      html: `No hay suficiente stock de <strong>${producto.nombre}</strong>`,
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+    return;
+  }
   // Obtener el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Verificar si el producto ya está en el carrito
+  // Verificar si el producto esta en el carrito
   let productoEnCarrito = carrito.find((p) => p.id === id);
   if (productoEnCarrito) {
     productoEnCarrito.cantidad += cantidad;
@@ -117,57 +127,55 @@ function agregarAlCarrito(id) {
 }
 
 function cargarProductosHome() {
-  let productosDescuento = aplicarDescuento(productosHome, 30);
+  productosHomeDescuento = aplicarDescuento(productosHome, 30);
   const contenedor = document.getElementById("productosHome");
-  for (let i = 0; i < productosDescuento.length; i++) {
-    const producto = productosDescuento[i];
+  productosHomeDescuento.forEach((producto) => {
     const div = document.createElement("div");
     div.className = "producto";
     div.innerHTML = `
-              <img src="${producto.imagen}" alt="${
+      <div class="prodsTamaño"><img src="${producto.imagen}" alt="${
       producto.nombre
-    }" width="100" height="100">
-              <h3>${producto.nombre}</h3>
-              <p class="precio"> <span class="descuento">30%</span> $${producto.precio.toFixed(
-                2
-              )}</p>
-              <p>Stock: ${producto.stock}</p>
-              <input type="number" id="cantidad-${
-                producto.id
-              }" min="0" value="0" placeholder="Cantidad">
-            <button class="btn" onclick="agregarAlCarrito(${
-              producto.id
-            })">Agregar al carrito</button>
-              `;
+    }">
+      <h3>${producto.nombre}</h3>
+      <p class="precio"> <span class="descuento">30%</span> $${producto.precio.toFixed(
+        2
+      )}</p>
+      <p>Stock: ${producto.stock}</p>
+      <input type="number" id="cantidad-${
+        producto.id
+      }" min="0" value="0" placeholder="Cantidad">
+      <button class="btn" onclick="agregarAlCarrito(${
+        producto.id
+      })">Agregar al carrito</button>
+      </div>`;
     contenedor.appendChild(div);
-  }
+  });
 }
 
 function cargarProductosHomeDos() {
-  let productosDescuento = aplicarDescuento(productosDos, 30);
+  productosDosDescuento = aplicarDescuento(productosDos, 30);
   const contenedor = document.getElementById("productosDos");
-  for (let i = 0; i < productosDescuento.length; i++) {
-    const producto = productosDescuento[i];
+  productosDosDescuento.forEach((producto) => {
     const div = document.createElement("div");
     div.className = "producto";
     div.innerHTML = `
-                <img src="${producto.imagen}" alt="${
+      <div class="prodsTamaño"><img src="${producto.imagen}" alt="${
       producto.nombre
-    }" width="100" height="100">
-                <h3>${producto.nombre}</h3>
-                <p class="precio"> <span class="descuento">30%</span> $${producto.precio.toFixed(
-                  2
-                )}</p>
-                <p>Stock: ${producto.stock}</p>
-                <input type="number" id="cantidad-${
-                  producto.id
-                }" min="0" value="0" placeholder="Cantidad">
-                <button class="btn" onclick="agregarAlCarrito(${
-                  producto.id
-                })">Agregar al carrito</button>
-              `;
+    }">
+      <h3>${producto.nombre}</h3>
+      <p class="precio"> <span class="descuento">30%</span> $${producto.precio.toFixed(
+        2
+      )}</p>
+      <p>Stock: ${producto.stock}</p>
+      <input type="number" id="cantidad-${
+        producto.id
+      }" min="0" value="0" placeholder="Cantidad">
+      <button class="btn" onclick="agregarAlCarrito(${
+        producto.id
+      })">Agregar al carrito</button>
+      </div>`;
     contenedor.appendChild(div);
-  }
+  });
 }
 
 window.onload = function () {

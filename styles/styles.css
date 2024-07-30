@@ -39,6 +39,13 @@ main {
 .verde {
   color: 00843D;
 }
+.prodsTamaño {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 400;
+  width: 275;
+}
 .contacto-info {
   margin-bottom: 40px;
 }
@@ -332,6 +339,87 @@ button {
 .carrito-compras {
   width: 20px;
   height: 20px;
+}
+
+/*  ---------------------- Foto Bienvenida ------------------------*/
+.sectionBienv {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  height: 72vh;
+  flex-direction: column;
+}
+.content {
+  display: flex;
+  justify-content: space-around;
+  background: rgb(0, 0, 0);
+  border-radius: 40px;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+.text {
+  flex: 1;
+  padding: 20px;
+}
+
+.text h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+.text p {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  color: #ffffff;
+}
+.text ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+.imagenExt {
+  flex: 1;
+  padding: 20px;
+}
+.imagenExt img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.text ul li {
+  margin: 10px 0;
+}
+
+.section:nth-child(odd) .content {
+  flex-direction: row;
+}
+
+.section:nth-child(even) .content {
+  flex-direction: row-reverse;
+}
+
+/*  ---------------------- Foto Bienvenida FIN ------------------------*/
+.flecha {
+  width: 45px;
+  height: 45px;
+  animation: titilar 1s infinite;
+  margin-top: 50px;
+}
+
+@keyframes titilar {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*  ------------------------ FOOTER ------------------------  */
 footer {

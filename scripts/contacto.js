@@ -8,41 +8,41 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
   let comentarios = document.getElementById("comentarios").value.trim();
 
   //Variable si se cumplen las validaciones se envie, sino frena el envio
-  let hasError = false;
+  let err = false;
 
   // Limpiar mensajes de error previos
   document
     .querySelectorAll(".error-message")
-    .forEach((el) => (el.textContent = ""));
+    .forEach((limpia) => (limpia.textContent = ""));
   document.getElementById("form-message").textContent = "";
 
   if (!nombre) {
     document.getElementById("error-nombre").textContent =
       "El nombre es obligatorio.";
-    hasError = true;
+    err = true;
   }
 
   if (!apellido) {
     document.getElementById("error-apellido").textContent =
       "El apellido es obligatorio.";
-    hasError = true;
+    err = true;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     document.getElementById("error-email").textContent =
       "El email no tiene un formato válido.";
-    hasError = true;
+    err = true;
   }
 
   let telefonoValido = /^\+54\d{10,15}$/;
   if (!telefonoValido.test(telefono)) {
     document.getElementById("error-telefono").textContent =
       "El teléfono debe comenzar con +54 y tener entre 10 y 15 dígitos.";
-    hasError = true;
+    err = true;
   }
 
-  if (hasError) {
+  if (err) {
     return;
   }
 
